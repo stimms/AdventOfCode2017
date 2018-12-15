@@ -10,6 +10,13 @@ namespace Day5
     {
         static void Main(string[] args)
         {
+            Part1();
+            Part2();
+            Console.ReadLine();
+        }
+
+        private static void Part1()
+        {
             var lines = File.ReadAllLines("input.txt").Select(x => Int32.Parse(x)).ToList();
             var index = 0;
             int i = 0;
@@ -22,7 +29,29 @@ namespace Day5
             }
 
             Console.WriteLine(i);
-            Console.ReadLine();
+        }
+        private static void Part2()
+        {
+            var lines = File.ReadAllLines("input.txt").Select(x => Int32.Parse(x)).ToList();
+            var index = 0;
+            int i = 0;
+            while (index < lines.Count() && index >= 0)
+            {
+                var newIndex = index + lines[index];
+                if (lines[index] >= 3)
+                {
+                    lines[index]--;
+                }
+                else
+                {
+                    lines[index]++;
+                }
+
+                i++;
+                index = newIndex;
+            }
+
+            Console.WriteLine(i);
         }
     }
 }
